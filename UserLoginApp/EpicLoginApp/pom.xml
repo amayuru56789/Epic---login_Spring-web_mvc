@@ -19,66 +19,66 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
-            <version>6.0.2</version>
+            <version>5.3.21</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>2.14.1</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
+<!--        <dependency>-->
+<!--            <groupId>com.fasterxml.jackson.core</groupId>-->
+<!--            <artifactId>jackson-databind</artifactId>-->
+<!--            <version>2.14.1</version>-->
+<!--        </dependency>-->
+<!--        &lt;!&ndash; https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api &ndash;&gt;-->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
             <version>4.0.1</version>
             <scope>provided</scope>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.springframework.data/spring-data-jpa -->
+<!--        &lt;!&ndash; https://mvnrepository.com/artifact/org.springframework.data/spring-data-jpa &ndash;&gt;-->
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-jpa</artifactId>
             <version>3.0.0</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-entitymanager -->
+<!--        &lt;!&ndash; https://mvnrepository.com/artifact/org.hibernate/hibernate-entitymanager &ndash;&gt;-->
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-entitymanager</artifactId>
             <version>5.6.14.Final</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+<!--        &lt;!&ndash; https://mvnrepository.com/artifact/mysql/mysql-connector-java &ndash;&gt;-->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.31</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.springframework/spring-test -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
-            <version>6.0.2</version>
-            <scope>test</scope>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-            <version>5.9.0-RC1</version>
-            <scope>test</scope>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+<!--        &lt;!&ndash; https://mvnrepository.com/artifact/org.springframework/spring-test &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>org.springframework</groupId>-->
+<!--            <artifactId>spring-test</artifactId>-->
+<!--            <version>6.0.2</version>-->
+<!--            <scope>test</scope>-->
+<!--        </dependency>-->
+<!--        &lt;!&ndash; https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>org.junit.jupiter</groupId>-->
+<!--            <artifactId>junit-jupiter-api</artifactId>-->
+<!--            <version>5.9.0-RC1</version>-->
+<!--            <scope>test</scope>-->
+<!--        </dependency>-->
+<!--        &lt;!&ndash; https://mvnrepository.com/artifact/org.projectlombok/lombok &ndash;&gt;-->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.18.24</version>
             <scope>provided</scope>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.modelmapper/modelmapper -->
-        <dependency>
-            <groupId>org.modelmapper</groupId>
-            <artifactId>modelmapper</artifactId>
-            <version>3.1.0</version>
-        </dependency>
+<!--        &lt;!&ndash; https://mvnrepository.com/artifact/org.modelmapper/modelmapper &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>org.modelmapper</groupId>-->
+<!--            <artifactId>modelmapper</artifactId>-->
+<!--            <version>3.1.0</version>-->
+<!--        </dependency>-->
 
     </dependencies>
 
