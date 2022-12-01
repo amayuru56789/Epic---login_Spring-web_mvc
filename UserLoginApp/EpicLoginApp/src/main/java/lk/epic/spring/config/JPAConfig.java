@@ -24,40 +24,40 @@ import javax.sql.DataSource;
 @PropertySource("classpath:application.properties")
 public class JPAConfig {
 
-    @Autowired
-    Environment environment;
+//    @Autowired
+//    Environment environment;
 
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource ds, JpaVendorAdapter va){
         LocalContainerEntityManagerFactoryBean bean = new LocalContainerEntityManagerFactoryBean();
         bean.setJpaVendorAdapter(va);
         bean.setDataSource(ds);
-        bean.setPackagesToScan(environment.getRequiredProperty("entity.package.name"));
+        bean.setPackagesToScan("lk.epic.spring.Entity");
         return bean;
     }
 
     @Bean
     public DataSource dataSource(){
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setUrl(environment.getRequiredProperty("epic.app.url"));
-        dataSource.setUsername(environment.getRequiredProperty("epic.app.username"));
-        dataSource.setPassword(environment.getRequiredProperty("epic.app.password"));
-        dataSource.setDriverClassName(environment.getRequiredProperty("epic.app.driverclassname"));
+        dataSource.setUrl("jdbc:mysql://127.0.0.1:3306/loginApp?createDatabaseIfNotExist=true");
+        dataSource.setUsername("root");
+        dataSource.setPassword("1234");
+        dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
         return dataSource;
     }
 
     @Bean
     public JpaVendorAdapter jpaVendorAdapter(){
         HibernateJpaVendorAdapter vendor = new HibernateJpaVendorAdapter();
-        vendor.setDatabasePlatform(environment.getRequiredProperty("epic.app.dialect"));
+        vendor.setDatabasePlatform("org.hibernate.dialect.MySQL8Dialect");
         vendor.setDatabase(Database.MYSQL);
         vendor.setShowSql(true);
         vendor.setGenerateDdl(true);
         return vendor;
     }
 
-    /*@Bean
+    @Bean
     public PlatformTransactionManager transactionManager(EntityManagerFactory emf){
         return new JpaTransactionManager(emf);
-    }*/
+    }
 }
