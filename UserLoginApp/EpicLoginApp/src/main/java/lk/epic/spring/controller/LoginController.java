@@ -27,8 +27,6 @@ public class LoginController {
         for (UserDTO dto : loginService.fetchAllUser()) {
             if(dto.getUserName().equalsIgnoreCase(userName) & dto.getPassword().equalsIgnoreCase(password)){
                 return new ResponseUtil(200, "Ok", null);
-            }else {
-                return new ResponseUtil(400, "error", null);
             }
         }
 
