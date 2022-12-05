@@ -21,7 +21,7 @@ public class LoginController {
     @Autowired
     LoginService loginService;
 
-    @GetMapping(params = {"userName", "password"}, produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(params = {"userName", "password"}, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil userLogin(@RequestParam String userName, String password){
         System.out.println(userName+" "+password);
         for (UserDTO dto : loginService.fetchAllUser()) {
