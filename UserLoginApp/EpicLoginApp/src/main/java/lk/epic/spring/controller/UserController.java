@@ -7,6 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 /**
  * @author Amayuru indeewara
  * @created 30/11/2022 - 09:57
@@ -29,13 +32,15 @@ public class UserController {
 
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil saveUser(@ModelAttribute UserDTO user){
-        userService.saveUser(user);
+
+        userService.saveUser(new UserDTO(user.getUserID(), user.getUserName(), user.getAddress(), user.getEmail(), user.getContact(), user.getPassword(), LocalDate.now().toString(), " "));
         return new ResponseUtil(200, "Ok", null);
     }
 
     @PutMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil updateUser(@RequestBody UserDTO user){
-        userService.updateUser(user);
+        UserDTO dto = userService.searchUser(user.getUserID());
+        userService.updateUser(new UserDTO(user.getUserID(), user.getUserName(), user.getAddress(), user.getEmail(), user.getContact(), dto.getPassword(), dto.getCreateTime(), LocalDateTime.now().toString()));
         return new ResponseUtil(200, "Ok", null);
     }
 
