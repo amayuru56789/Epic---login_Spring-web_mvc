@@ -2,11 +2,16 @@ package lk.epic.spring.controller;
 
 import lk.epic.spring.DTO.UserDTO;
 import lk.epic.spring.services.UserService;
+import lk.epic.spring.util.Encryption;
 import lk.epic.spring.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import java.io.UnsupportedEncodingException;
+import java.security.InvalidKeyException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -24,6 +29,9 @@ public class UserController {
     @Autowired
     UserService userService;
 
+    @Autowired
+    Encryption en;
+
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil getAllUser(){
 
@@ -32,8 +40,20 @@ public class UserController {
 
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil saveUser(@ModelAttribute UserDTO user){
+        try {
+            String passwordEncrypt = en.encrypt(user.getPassword());
 
-        userService.saveUser(new UserDTO(user.getUserID(), user.getUserName(), user.getAddress(), user.getEmail(), user.getContact(), user.getPassword(), LocalDate.now().toString(), " "));
+        userService.saveUser(new UserDTO(user.getUserID(), user.getUserName(), user.getAddress(), user.getEmail(), user.getContact(), passwordEncrypt, LocalDate.now().toString(), " "));
+
+        } catch (InvalidKeyException e) {
+            e.printStackTrace();
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        } catch (IllegalBlockSizeException e) {
+            e.printStackTrace();
+        } catch (BadPaddingException e) {
+            e.printStackTrace();
+        }
         return new ResponseUtil(200, "Ok", null);
     }
 

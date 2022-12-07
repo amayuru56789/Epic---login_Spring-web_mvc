@@ -3,10 +3,15 @@ package lk.epic.spring.controller;
 import lk.epic.spring.DTO.UserDTO;
 import lk.epic.spring.services.LoginService;
 import lk.epic.spring.services.UserService;
+import lk.epic.spring.util.Encryption;
 import lk.epic.spring.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import java.security.InvalidKeyException;
 
 /**
  * @author Amayuru indeewara
@@ -21,11 +26,25 @@ public class LoginController {
     @Autowired
     LoginService loginService;
 
+    @Autowired
+    Encryption encryption;
+
     @PostMapping(params = {"userName", "password"}, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil userLogin(@RequestParam String userName, String password){
         System.out.println(userName+" "+password);
         for (UserDTO dto : loginService.fetchAllUser()) {
-            if(dto.getUserName().equalsIgnoreCase(userName) & dto.getPassword().equalsIgnoreCase(password)){
+            String passwordEncrypt=dto.getPassword();
+            String passwordDecrypt= null;
+            try {
+                passwordDecrypt = encryption.decrypt(passwordEncrypt);
+            } catch (IllegalBlockSizeException e) {
+                e.printStackTrace();
+            } catch (BadPaddingException e) {
+                e.printStackTrace();
+            } catch (InvalidKeyException e) {
+                e.printStackTrace();
+            }
+            if(dto.getUserName().equalsIgnoreCase(userName) & passwordDecrypt.equalsIgnoreCase(password)){
                 return new ResponseUtil(200, "Ok", null);
             }
         }
